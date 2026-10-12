@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About | AgriVision AI</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins',sans-serif;
+        }
+
+        body{
+            background:#050505;
+            color:white;
+            overflow-x:hidden;
+        }
+
+        html{
+            scroll-behavior:smooth;
+        }
+
+        /* NAVBAR */
+
+        .navbar{
+            background:rgba(0,0,0,0.8);
+            backdrop-filter:blur(10px);
+            padding:20px 60px;
+        }
+
+        .navbar-brand{
+            color:white;
+            font-size:38px;
+            font-weight:700;
+        }
+
+        .nav-link{
+            color:white !important;
+            margin-left:20px;
+            font-size:20px;
+            transition:0.3s;
+        }
+
+        .nav-link:hover{
+            color:#00ffcc !important;
+        }
+
+        /* HERO */
+
+        .hero{
+            padding-top:180px;
+            text-align:center;
+            padding-bottom:80px;
+        }
+
+        .hero h1{
+            font-size:75px;
+            font-weight:700;
+            margin-bottom:20px;
+        }
+
+        .hero p{
+            font-size:24px;
+            color:#cccccc;
+            width:80%;
+            margin:auto;
+            line-height:1.8;
+        }
+
+        /* SECTION TITLE */
+
+        .section-title{
+            text-align:center;
+            font-size:55px;
+            margin-bottom:50px;
+            font-weight:700;
+        }
+
+        /* CARDS */
+
+        .card-box{
+            background:#0d0d0d;
+            border-radius:25px;
+            padding:40px;
+            text-align:center;
+            transition:0.4s;
+            height:100%;
+            box-shadow:0 0 20px rgba(0,255,200,0.08);
+        }
+
+        .card-box:hover{
+            transform:translateY(-10px);
+            box-shadow:0 0 30px rgba(0,255,200,0.3);
+        }
+
+        .card-box h3{
+            margin-top:20px;
+            font-size:32px;
+            font-weight:600;
+        }
+
+        .card-box p{
+            margin-top:15px;
+            font-size:20px;
+            color:#cccccc;
+            line-height:1.8;
+        }
+
+        /* FEATURES */
+
+        .feature-box{
+            background:#101010;
+            padding:25px;
+            border-radius:20px;
+            text-align:center;
+            transition:0.3s;
+            margin-bottom:25px;
+        }
+
+        .feature-box:hover{
+            transform:scale(1.05);
+            box-shadow:0 0 20px rgba(0,255,200,0.2);
+        }
+
+        .feature-box h4{
+            margin-top:15px;
+            font-size:28px;
+        }
+
+        /* DEVELOPER */
+
+        .developer{
+            padding:100px 20px;
+            text-align:center;
+        }
+
+        .developer-card{
+            max-width:700px;
+            margin:auto;
+            background:#0d0d0d;
+            padding:50px;
+            border-radius:30px;
+            box-shadow:0 0 30px rgba(0,255,200,0.15);
+        }
+
+        .developer-card h2{
+            font-size:50px;
+            margin-bottom:20px;
+        }
+
+        .developer-card p{
+            font-size:24px;
+            color:#cccccc;
+            line-height:1.8;
+        }
+
+        /* FOOTER */
+
+        footer{
+            background:black;
+            text-align:center;
+            padding:30px;
+            margin-top:80px;
+        }
+
+        footer h3{
+            font-size:40px;
+        }
+
+        footer p{
+            font-size:20px;
+            color:#cccccc;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-expand-lg fixed-top">
+
+    <div class="container-fluid">
+
+        <a class="navbar-brand" href="/">🌍 AgriVision AI</a>
+
+        <div class="ms-auto d-flex">
+
+            <a class="nav-link" href="/">Home</a>
+            <a class="nav-link" href="/architecture">Architecture</a>
+            <a class="nav-link" href="/about">About</a>
+            <a class="nav-link" href="/history">History</a>
+
+        </div>
+
+    </div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="container">
+
+        <h1>About The Project</h1>
+
+        <p>
+            AgriVision AI is a Deep Learning based land classification system
+            that analyzes satellite images and predicts different land categories
+            such as agriculture, forest, water, crop, and barren land using
+            Convolutional Neural Networks (CNN).
+        </p>
+
+    </div>
+
+</section>
+
+<!-- TECHNOLOGIES -->
+
+<section class="container mb-5">
+
+    <h2 class="section-title">Technologies Used</h2>
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+            <div class="card-box">
+                <h1>🐍</h1>
+                <h3>Python</h3>
+                <p>Backend programming language used for AI integration.</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card-box">
+                <h1>🧠</h1>
+                <h3>TensorFlow</h3>
+                <p>Deep learning framework used for image classification.</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card-box">
+                <h1>🌐</h1>
+                <h3>Flask</h3>
+                <p>Python web framework used to build the web application.</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FEATURES -->
+
+<section class="container mt-5">
+
+    <h2 class="section-title">Key Features</h2>
+
+    <div class="row">
+
+        <div class="col-md-4">
+            <div class="feature-box">
+                <h1>🚀</h1>
+                <h4>AI Prediction</h4>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="feature-box">
+                <h1>📊</h1>
+                <h4>Prediction History</h4>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="feature-box">
+                <h1>❌</h1>
+                <h4>Invalid Detection</h4>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+ <!-- PROJECT OBJECTIVES -->
+
+<section class="container mt-5 mb-5">
+
+    <h2 class="section-title">Project Objectives</h2>
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+
+            <div class="card-box">
+
+                <h1>🎯</h1>
+
+                <h3>Accurate Classification</h3>
+
+                <p>
+                    Improve land classification accuracy using
+                    advanced Deep Learning models and CNN architecture.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card-box">
+
+                <h1>⚡</h1>
+
+                <h3>Real-Time Prediction</h3>
+
+                <p>
+                    Provide fast and real-time prediction
+                    results for uploaded satellite images.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card-box">
+
+                <h1>🌍</h1>
+
+                <h3>Smart Agriculture</h3>
+
+                <p>
+                    Support smart farming and land monitoring
+                    using Artificial Intelligence technologies.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- FOOTER -->
+
+<footer>
+
+    <h3>AgriVision AI © 2026</h3>
+
+    <p>
+        Real-Time Agriculture Land Classification Using Deep Learning
+    </p>
+
+</footer>
+
+</body>
+</html>

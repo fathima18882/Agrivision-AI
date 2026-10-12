@@ -1,0 +1,5 @@
+Flask>=3.0,<4.0
+tensorflow>=2.15
+numpy
+Pillow
+reportlab

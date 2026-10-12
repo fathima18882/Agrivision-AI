@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Prediction History</title>
+
+    <!-- BOOTSTRAP -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- AOS -->
+
+    <link rel="stylesheet"
+          href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+
+    <!-- GOOGLE FONT -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins',sans-serif;
+        }
+
+        body{
+
+            background:#071a12;
+
+            color:white;
+
+            padding:40px;
+        }
+
+        /* TITLE */
+
+        .main-title{
+
+            text-align:center;
+
+            font-size:55px;
+
+            font-weight:700;
+
+            margin-bottom:50px;
+        }
+
+        /* HISTORY CARD */
+
+        .history-card{
+
+            background:rgba(255,255,255,0.08);
+
+            border:1px solid rgba(255,255,255,0.12);
+
+            border-radius:25px;
+
+            overflow:hidden;
+
+            transition:0.4s;
+
+            backdrop-filter:blur(12px);
+
+            box-shadow:0 0 25px rgba(0,0,0,0.3);
+
+            height:100%;
+        }
+
+        .history-card:hover{
+
+            transform:translateY(-8px);
+
+            box-shadow:0 0 30px rgba(0,255,150,0.25);
+        }
+
+        /* IMAGE */
+
+        .history-img{
+
+            width:100%;
+
+            height:240px;
+
+            object-fit:cover;
+        }
+
+        /* CONTENT */
+
+        .history-content{
+
+            padding:25px;
+        }
+
+        .prediction{
+
+            font-size:30px;
+
+            font-weight:700;
+
+            color:#00ff99;
+        }
+
+        .invalid{
+
+            color:#ff4d4d !important;
+        }
+
+        .confidence{
+
+            margin-top:15px;
+
+            font-size:20px;
+        }
+
+        .time{
+
+            margin-top:15px;
+
+            color:#bbb;
+
+            font-size:16px;
+        }
+
+        /* BUTTON */
+
+        .btn-home{
+
+            display:inline-block;
+
+            margin-top:50px;
+
+            padding:15px 35px;
+
+            border-radius:50px;
+
+            text-decoration:none;
+
+            background:linear-gradient(45deg,#00c853,#00e676);
+
+            color:white;
+
+            font-size:20px;
+
+            font-weight:600;
+
+            transition:0.3s;
+        }
+
+        .btn-home:hover{
+
+            transform:scale(1.05);
+
+            color:white;
+
+            box-shadow:0 0 25px rgba(0,255,150,0.4);
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<h1 class="main-title"
+    data-aos="fade-up">
+
+    📁 Prediction History
+
+</h1>
+
+<div class="container">
+
+    <div class="row g-4">
+
+        {% for log in logs %}
+
+        <div class="col-lg-4 col-md-6">
+
+            <div class="history-card"
+                 data-aos="fade-up">
+
+                <!-- IMAGE -->
+
+                <img src="{{ url_for('static',
+                         filename='uploads/' + log.filename) }}"
+                     class="history-img">
+
+                <!-- CONTENT -->
+
+                <div class="history-content">
+
+                    {% if log.prediction == "Invalid Image" %}
+
+                        <div class="prediction invalid">
+
+                            ❌ Invalid Image
+
+                        </div>
+
+                    {% else %}
+
+                        <div class="prediction">
+
+                            {{ log.prediction }}
+
+                        </div>
+
+                    {% endif %}
+
+                    <div class="confidence">
+
+                        🎯 Confidence:
+                        <b>{{ log.confidence }}%</b>
+
+                    </div>
+
+                    <div class="time">
+
+                        🕒 {{ log.time }}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    <!-- HOME BUTTON -->
+
+    <div class="text-center">
+
+        <a href="/"
+           class="btn-home">
+
+            ⬅ Back Home
+
+        </a>
+
+    </div>
+
+</div>
+
+<!-- AOS -->
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+
+AOS.init({
+
+    duration:1000,
+
+    once:true
+
+});
+
+</script>
+
+</body>
+
+</html>

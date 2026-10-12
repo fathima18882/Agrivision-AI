@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Architecture | AgriVision AI</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+
+        html{
+            scroll-behavior:smooth;
+        }
+
+        body{
+            background:linear-gradient(to right,#000000,#041b1f,#000000);
+            color:white;
+            font-family:Arial,sans-serif;
+            padding-top:120px;
+        }
+
+        .navbar{
+            background:rgba(0,0,0,0.92);
+            backdrop-filter:blur(12px);
+            padding:20px;
+            box-shadow:0 0 25px rgba(0,255,200,0.08);
+        }
+
+        .navbar-brand{
+            font-size:3rem;
+            font-weight:bold;
+        }
+
+        .nav-link{
+            font-size:1.3rem;
+            margin-left:15px;
+            transition:0.3s;
+        }
+
+        .nav-link:hover{
+            color:#00ffd0 !important;
+        }
+
+        .main-card{
+            background:rgba(15,15,15,0.96);
+            border-radius:30px;
+            padding:50px;
+            box-shadow:0 0 30px rgba(0,255,200,0.12);
+            border:1px solid rgba(0,255,200,0.1);
+        }
+
+        h1{
+            font-size:4rem;
+            font-weight:bold;
+        }
+
+        .step{
+            display:inline-block;
+            padding:18px 28px;
+            margin:12px;
+            border-radius:18px;
+            background:#00c896;
+            color:white;
+            font-weight:bold;
+            transition:0.3s;
+            box-shadow:0 0 15px rgba(0,255,200,0.25);
+            min-width:180px;
+        }
+
+        .step:hover{
+            transform:scale(1.08);
+        }
+
+        .step small{
+            display:block;
+            margin-top:6px;
+            font-size:0.78rem;
+            font-weight:normal;
+            opacity:0.9;
+        }
+
+        .active-step{
+            background:#00ffd0 !important;
+            transform:scale(1.12);
+            color:black;
+        }
+
+        .arrow{
+            font-size:28px;
+            color:#00ffd0;
+        }
+
+        .run-btn{
+            background:#00c896;
+            border:none;
+            padding:16px 38px;
+            border-radius:50px;
+            color:white;
+            font-size:1.2rem;
+            font-weight:bold;
+            transition:0.3s;
+            box-shadow:0 0 20px rgba(0,255,200,0.2);
+        }
+
+        .run-btn:hover{
+            transform:scale(1.05);
+            background:#00ffd0;
+            color:black;
+        }
+
+        .result-card{
+            background:rgba(20,20,20,0.95);
+            padding:35px;
+            border-radius:22px;
+            box-shadow:0 0 20px rgba(0,255,200,0.12);
+            height:100%;
+            transition:0.3s;
+            border:1px solid rgba(0,255,200,0.08);
+        }
+
+        .result-card:hover{
+            transform:translateY(-8px);
+            box-shadow:0 0 30px rgba(0,255,200,0.18);
+        }
+
+        .mini-text{
+            opacity:0.9;
+            margin-top:12px;
+            font-size:1.05rem;
+            line-height:1.7;
+        }
+
+        .class-card{
+            background:#111;
+            border-radius:20px;
+            padding:35px 20px;
+            color:white;
+            border:1px solid rgba(0,255,200,0.2);
+            transition:0.3s;
+            height:180px;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            box-shadow:0 0 15px rgba(0,255,200,0.08);
+        }
+
+        .class-card:hover{
+            transform:translateY(-5px);
+            box-shadow:0 0 20px rgba(0,255,200,0.3);
+            background:#00c896;
+        }
+
+        .class-card h4{
+            font-size:40px;
+            margin-bottom:15px;
+        }
+
+        .class-card p{
+            font-size:22px;
+            font-weight:500;
+            margin:0;
+        }
+
+        .section-title{
+            font-size:55px;
+            font-weight:bold;
+            color:white;
+        }
+
+        footer{
+            margin-top:80px;
+            padding:35px;
+            text-align:center;
+            background:rgba(0,0,0,0.9);
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+
+    <div class="container">
+
+        <a class="navbar-brand" href="/">
+            🌍 AgriVision AI
+        </a>
+
+        <ul class="navbar-nav ms-auto">
+
+            <li class="nav-item">
+                <a class="nav-link text-white" href="/">Home</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link text-white" href="/architecture">Architecture</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link text-white" href="/about">About</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link text-white" href="/history">History</a>
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav>
+
+<div class="container">
+
+    <div class="main-card text-center">
+
+        <h1>⚙️ System Architecture</h1>
+
+        <p class="mt-4 fs-4 text-light">
+            Complete AI workflow for satellite land classification
+        </p>
+
+        <!-- PIPELINE -->
+
+        <div class="mt-5">
+
+            <span id="step1" class="step">
+                👤 User
+                <small>Select satellite image</small>
+            </span>
+
+            <span class="arrow">→</span>
+
+            <span id="step2" class="step">
+                📤 Upload
+                <small>Send image to server</small>
+            </span>
+
+            <span class="arrow">→</span>
+
+            <span id="step3" class="step">
+                ⚙️ Preprocess
+                <small>Resize • Normalize</small>
+            </span>
+
+            <span class="arrow">→</span>
+
+            <span id="step4" class="step">
+                🧠 CNN Model
+                <small>Feature extraction</small>
+            </span>
+
+            <span class="arrow">→</span>
+
+            <span id="step5" class="step">
+                📊 Prediction
+                <small>Land classification result</small>
+            </span>
+
+        </div>
+
+        <!-- BUTTON -->
+
+        <button class="run-btn mt-5" onclick="startFlow()">
+            ▶️ Run AI Pipeline
+        </button>
+
+        <!-- AI PROCESS -->
+
+        <h2 class="mt-5 mb-5">🧠 AI Processing Flow</h2>
+
+        <div class="row g-4 justify-content-center">
+
+            <div class="col-md-5">
+
+                <div class="result-card text-center">
+
+                    <h2>🧠 CNN Processing</h2>
+
+                    <p class="mini-text">
+                        Extracts satellite image features and identifies land patterns
+                        using Convolutional Neural Networks and Deep Learning algorithms.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-5">
+
+                <div class="result-card text-center">
+
+                    <h2>📊 Prediction</h2>
+
+                    <p class="mini-text">
+                        Displays the final land classification result generated
+                        by the CNN model using AI based satellite image analysis.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- AI FEATURES -->
+
+        <h2 class="mt-5 mb-4">🚀 AI Features</h2>
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+
+                <div class="result-card text-center">
+
+                    <h2>⚡ Real-Time</h2>
+
+                    <p class="mini-text">
+                        Fast prediction results generated within seconds using AI.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="result-card text-center">
+
+                    <h2>🧠 Deep Learning</h2>
+
+                    <p class="mini-text">
+                        CNN based feature extraction for accurate land classification.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="result-card text-center">
+
+                    <h2>🌍 Satellite Analysis</h2>
+
+                    <p class="mini-text">
+                        Detects agriculture, forest, water and barren land areas.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- MODEL STATS -->
+
+        <h2 class="mt-5 mb-4">📈 Model Statistics</h2>
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+
+                <div class="result-card">
+
+                    <h2>🎯 Accuracy</h2>
+
+                    <h3 class="mt-3">Not yet measured</h3>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="result-card">
+
+                    <h2>⚡ Speed</h2>
+
+                    <h3 class="mt-3">Environment-dependent</h3>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="result-card">
+
+                    <h2>🧠 Model</h2>
+
+                    <h1 class="mt-3">CNN</h1>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- SUPPORTED CLASSES -->
+
+        <h2 class="text-center mt-5 mb-5 section-title">
+            🌍 Supported Classes
+        </h2>
+
+        <div class="row justify-content-center g-4">
+
+            <div class="col-lg-2 col-md-3 col-6">
+                <div class="class-card text-center">
+                    <h4>🌾</h4>
+                    <p>Agriculture</p>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-3 col-6">
+                <div class="class-card text-center">
+                    <h4>🌲</h4>
+                    <p>Forest</p>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-3 col-6">
+                <div class="class-card text-center">
+                    <h4>💧</h4>
+                    <p>Water</p>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-3 col-6">
+                <div class="class-card text-center">
+                    <h4>🏜️</h4>
+                    <p>Barren</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="text-center mt-5">
+
+            <a href="/" class="btn btn-outline-light btn-lg px-4">
+                ← Back To Home
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+
+    <h2>AgriVision AI © 2026</h2>
+
+    <p class="mt-3">
+        AI Powered Land Classification Using Deep Learning
+    </p>
+
+</footer>
+
+<script>
+
+function startFlow(){
+
+    let steps = [
+        "step1",
+        "step2",
+        "step3",
+        "step4",
+        "step5"
+    ];
+
+    let i = 0;
+
+    function nextStep(){
+
+        if(i > 0){
+            document.getElementById(steps[i-1]).classList.remove("active-step");
+        }
+
+        if(i < steps.length){
+
+            document.getElementById(steps[i]).classList.add("active-step");
+
+            i++;
+
+            setTimeout(nextStep,700);
+        }
+    }
+
+    nextStep();
+}
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
