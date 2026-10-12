@@ -2,6 +2,10 @@
 
 Agrivision AI is a Flask web application that uses a TensorFlow/Keras image-classification model to classify uploaded images into five dataset categories: Agriculture, Forest, barren, crop, and water. The app displays the leading prediction, its model score, and the top-three class scores.
 
+## Application Preview
+
+![Agrivision AI prediction result](Screenshot%202026-10-12%20192329.png)
+
 ## Features
 
 - Image upload and land-category prediction
